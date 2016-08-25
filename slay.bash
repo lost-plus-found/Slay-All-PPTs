@@ -1,36 +1,28 @@
 #/bin/bash
 
+#cp for copy 
+#mv for move
+
+SLAY_LEVEL=cp
+
 EXTENTIONS=("ppt" "pptx" "c" "cpp")
-DIRECTORY=..
+
+SOURCE_DIR=..
 
 TARGET_PATH=$(pwd)
-cd $DIRECTORY
+cd $SOURCE_DIR
 SOURCE_PATH=$(pwd)
 cd $TARGET_PATH
 
 for EXTENTION in ${EXTENTIONS[@]}; do
-	FILES=$(find $SOURCE_PATH -name "*.$EXTENTION")
-	i=0
-	for FILE in $FILES; do
-		FILENAME=$(echo $FILE | grep ^/ | grep $EXTENTION$)
-		if [ "$FILENAME" = "" ]; then
-			FILENAME=$(echo $FILE | grep ^/)
-			if [ "$FILENAME" != "" ]; then
-				BROKEN_NAME=$FILENAME"\ "
-			else
-				FILENAME=$(echo $FILE | grep $EXTENTION$)
-				if [ "$FILENAME" != "" ]; then
-                                	FILE=$BROKEN_NAME$FILENAME
-					cp "$FILE" $i.$EXTENTION
-					i=$((i+1))
-				else
-					FILENAME=$(echo $FILE)
-					BROKEN_NAME=$BROKEN_NAME$FILENAME"\ "
-                       		fi
-			fi
-		else
-			#cp $FILE $i.$EXTENTION
-			i=$((i+1))
-		fi
+	find $SOURCE_PATH -name "*.$EXTENTION" > FILES.txt
+
+	NUMBER_OF_FILES=$(grep -c "" FILES.txt)
+
+	for i in `seq 1 $NUMBER_OF_FILES`; do
+        	FILE=$(sed -n "$i p" FILES.txt)
+        	$SLAY_LEVEL "$FILE" "$TARGET_PATH/$i.$EXTENTION"
 	done
 done
+
+rm FILES.txt
