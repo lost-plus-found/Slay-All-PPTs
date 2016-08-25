@@ -23,7 +23,9 @@ for EXTENTION in ${EXTENTIONS[@]}; do
 	NUMBER_OF_FILES=$(grep -c "" .FILES.txt)
 	for i in `seq 1 $NUMBER_OF_FILES`; do
         	FILE=$(sed -n "$i p" .FILES.txt)
-        	$SLAY_LEVEL "$FILE" "$TARGET_PATH/$i.$EXTENTION"
+		date=$(date)
+		NEW=${date:4:3}-${date:8:2}-${date:11:2}-${date:14:2}-${date:17:2}-$i
+        	$SLAY_LEVEL "$FILE" "$TARGET_PATH/$NEW.$EXTENTION"
 	done
 done
 rm .FILES.txt
