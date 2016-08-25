@@ -15,3 +15,4 @@ install:
 
 uninstall:
 	rm -f $(BINDIR)/sap
+	rm -rf ~/.sap

