@@ -16,14 +16,9 @@ $ `sudo make install`
 
 $ `echo $SHELL`
 
-If you get `/usr/bin/bash` then run
+If you get `/usr/bin/bash` then run $`echo 'alias sapbg="nohup sap > /dev/null 2>&1 &"' >> ~/.bashrc`
 
-$`echo 'alias sapbg="nohup sap > /dev/null 2>&1 &"' >> ~/.bashrc`
-
-
-If you get `/usr/bin/zsh` then run
-
-$`echo 'alias sapbg="nohup sap > /dev/null 2>&1 &"' >> ~/.zshrc`
+Else if you get `/usr/bin/zsh` then run $`echo 'alias sapbg="nohup sap > /dev/null 2>&1 &"' >> ~/.zshrc`
 
 Press `control + d`
 
