@@ -17,11 +17,15 @@ $ `sudo make install`
 $ `echo $SHELL`
 
 If you get `/usr/bin/bash`
+
 Run
+
 $`echo 'alias sapbg="nohup sap > /dev/null 2>&1 &"' >> ~/.bashrc`
 
 If you get `/usr/bin/zsh`
+
 Run
+
 $`echo 'alias sapbg="nohup sap > /dev/null 2>&1 &"' >> ~/.zshrc`
 
 Press `control + d`
