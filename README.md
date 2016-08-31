@@ -22,6 +22,10 @@ Else if you get `/usr/bin/zsh` then run $`echo 'alias sapbg="nohup sap > /dev/nu
 
 Press `control + d`
 
+## Update
+
+$ `sudo make update`
+
 ## Uninstalling
 
 $ `sudo make uninstall`
