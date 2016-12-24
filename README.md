@@ -1,6 +1,6 @@
 # Slay All PPTs
 
-Idea is to remove wanted the files from victim's pendrive.
+Idea is to remove all the wanted files from victim's pendrive.
 
 ## Installing
 
